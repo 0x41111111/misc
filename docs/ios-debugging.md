@@ -9,7 +9,7 @@ You need:
 * A root USB port (using a hub caused very consistent issues for me; if it works for you, that's great)
 * Git, GNU build tools, A C/++ compiler
 
-First, you're going to install Google's USB to WebKit debugger proxy and libimobiledevice. 
+First, you're going to install Google's WebKit USB debugger proxy and libimobiledevice. 
 
 Here's the repo URL for the proxy: https://github.com/google/ios-webkit-debug-proxy
 
@@ -25,7 +25,7 @@ Here's the repo URL for the proxy: https://github.com/google/ios-webkit-debug-pr
 1. Unplug your device.
 1. After following the last four steps, it's time to make the local imobiledevice install the default.
 
-If you want to make this persistent across shell sessions, add the following to your shell's profile. Otherwise, paste the commands in and edit `/directory/here/` where needed. You will need to re-set your PATH every time you want to use the debug proxy if you choose not to make these modifications persistent.
+If you want to make this persistent across shell sessions, add the following to your shell's profile. Otherwise, paste the commands in and replace `/directory/here/` with the directory you picked earlier to install libimobiledevice into. You will need to re-set your $PATH every time you want to use the debug proxy if you choose not to make these modifications persistent.
 
 ```sh
 export PKG_CONFIG_PATH = $PKG_CONFIG_PATH:/directory/here/lib/pkgconfig
@@ -42,8 +42,7 @@ Now that all the necessary stuff has been compiled and installed on your dev mac
 
 1. Make sure your device is unlocked and unplugged from your dev machine.
 1. Scroll down the left pane, find Safari. Go to Advanced, turn on Web Inspector.
-1. Kill Safari from the app switcher.
-1. Re-open Safari.
+1. (optional; but recommended) Kill Safari from the app switcher and re-open it.
 
 Now you can connect your device and pair it:
 
@@ -61,7 +60,7 @@ You should now test the proxy by running `ios_webkit_debug_proxy -d`.
 
 If all goes well, you should see a fair bit of terminal output, including some hex dumps of your machine and your device communicating with one another.
 
-Go to http://localhost:9221 and verify that your device is present. Click it and you should see all the tabs that you have open. (I advise not clicking on these, the built in dev tools that come with the proxy don't work too well)
+Go to http://localhost:9221 and verify that your device is present. Click it and you should see all the tabs that you have open. (I advise not clicking on the tabs themselves, the built in dev tools that come with the proxy don't work too well)
 
 Use Control-C to stop the proxy. Assuming you installed the [RemoteDebug adapter](https://github.com/RemoteDebug/remotedebug-ios-webkit-adapter), you should now start it and configure your dev tool of choice to use it.
 
